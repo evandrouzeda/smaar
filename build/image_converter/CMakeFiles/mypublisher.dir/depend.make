@@ -75,6 +75,7 @@ image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noeti
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/sensor_msgs/RegionOfInterest.h
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/sensor_msgs/image_encodings.h
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/std_msgs/Header.h
+image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/std_msgs/String.h
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcDecl.h
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /opt/ros/noetic/include/xmlrpcpp/XmlRpcValue.h
 image_converter/CMakeFiles/mypublisher.dir/src/mypublisher.cpp.o: /usr/include/opencv4/opencv2/calib3d.hpp

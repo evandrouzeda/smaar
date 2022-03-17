@@ -2,6 +2,11 @@
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
+#include "std_msgs/String.h"
+
+void imageCallback(const std_msgs::String& msg){
+    std::cout << msg;
+}
 
 int main(int argc, char **argv)
 {
@@ -12,6 +17,8 @@ int main(int argc, char **argv)
     cv::Mat image = cv::imread(argv[1], cv::IMREAD_COLOR);
     cv::waitKey(30);
     sensor_msgs::ImagePtr msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", image).toImageMsg();
+
+    ros::Subscriber sub = nh.subscribe("chatter", 1, imageCallback);
 
     ros::Rate loop_rate(5);
     while (nh.ok())

@@ -2,6 +2,8 @@
 #include <image_transport/image_transport.h>
 #include <opencv2/highgui/highgui.hpp>
 #include <cv_bridge/cv_bridge.h>
+#include "std_msgs/String.h"
+#include <sstream>
 
 namespace enc = sensor_msgs::image_encodings;
 
@@ -47,13 +49,26 @@ void imageCallback(const sensor_msgs::ImageConstPtr& msg){
     cv::imshow("green", green_mask);
     cv::waitKey(30);
     
-    
+    std_msgs::String response;
+    std::stringstream ss;
     if(hasWhite(red_mask))
-        std::cout << "é inimigo";
+        ss << "é inimigo";
     else if(hasWhite(green_mask))
-        std::cout << "é amigo";
-    else std::cout << "é civil";
+        ss << "é amigo";
+    else ss << "é civil";
 
+    response.data = ss.str();
+    ros::NodeHandle nh;
+    ros::Publisher pub = nh.advertise<std_msgs::String>("chatter", 1000);
+
+    ros::Rate loop_rate(5);
+    while (nh.ok())
+    {
+        pub.publish(response);
+        ros::spinOnce();
+        loop_rate.sleep();
+        break;
+    }
     /* cv::destroyWindow("red");
     cv::destroyWindow("green"); */
 }
